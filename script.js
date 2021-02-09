@@ -216,8 +216,8 @@ const quiz = {
     ]
 }
 
-quiz.nextQuestion = function () {
-    $(quiz.nextButton).unbind("click").on("click", function () {
+quiz.nextQuestion = function() {
+    $(quiz.nextButton).unbind("click").on("click", function() {
         quiz.questionIndex = quiz.questionIndex + 1;
 
         // update the user's score with the value of the answer they chose
@@ -230,8 +230,8 @@ quiz.nextQuestion = function () {
     });
 }
 
-quiz.showNext = function (index) {
-    $("#quiz label").on("click", function () {
+quiz.showNext = function(index) {
+    $("#quiz label").on("click", function() {
         quiz.nextButton.show();
 
         let chosenAnswer = this.control.id;
@@ -247,7 +247,7 @@ quiz.showNext = function (index) {
     });
 }
 
-quiz.resultsDisplay = function () {
+quiz.resultsDisplay = function() {
     quiz.songbirds.forEach(songbird => {
         if (songbird.scoreRange.includes(quiz.finalScore)) {
             let resultHtml = `
@@ -255,14 +255,14 @@ quiz.resultsDisplay = function () {
                 <img src="./assets/${songbird.image}" alt="A ${songbird.name}">
                 <p>${songbird.description}</p>
             `;
-            
+
             $("#results").append(resultHtml);
         }
     });
 }
 
-quiz.playAgain = function () {
-    $(quiz.playAgainButton).on("click", function () {
+quiz.playAgain = function() {
+    $(quiz.playAgainButton).on("click", function() {
         // restart quiz from home
         location.reload();
 
@@ -270,11 +270,14 @@ quiz.playAgain = function () {
         quiz.userScore = 0;
         quiz.finalScore = 0;
         quiz.questionIndex = 0;
+
+        $("header").addClass("homePage");
+        $(".mainSection").hide();
     });
 }
 
-quiz.showResults = function () {
-    $(quiz.resultsButton).on("click", function () {
+quiz.showResults = function() {
+    $(quiz.resultsButton).on("click", function() {
         // update the user's score with the value of the answer they chose
         quiz.finalScore += quiz.userScore;
 
@@ -289,8 +292,8 @@ quiz.showResults = function () {
     });
 }
 
-quiz.showResultsButton = function (index) {
-    $("#quiz label").on("click", function () {
+quiz.showResultsButton = function(index) {
+    $("#quiz label").on("click", function() {
         quiz.resultsButton.show();
 
         let chosenAnswer = this.control.id;
@@ -305,7 +308,7 @@ quiz.showResultsButton = function (index) {
     });
 }
 
-quiz.questionDisplay = function (index) {
+quiz.questionDisplay = function(index) {
     let questionHtml = `
         <fieldset>
             <legend>${quiz.questions[index].question}</legend>
@@ -358,27 +361,32 @@ quiz.questionDisplay = function (index) {
     }
 }
 
-quiz.showQuestion = function () {
-    quiz.startButton.on("click", function () {
+quiz.showQuestion = function() {
+    quiz.startButton.on("click", function() {
         quiz.startButton.hide();
         $(".startText").hide();
+
+        $("header").removeClass("homePage");
+        $(".mainSection").show();
 
         // show the first question
         quiz.questionDisplay(0);
     });
 }
 
-quiz.init = function () {
+quiz.init = function() {
     // hide Next and Play Again buttons
     quiz.nextButton.hide();
     quiz.resultsButton.hide();
     quiz.playAgainButton.hide();
+
+    $(".mainSection").hide();
 
     // start quiz
     quiz.showQuestion();
 }
 
 // doc ready
-$(function () {
+$(function() {
     quiz.init();
 });
