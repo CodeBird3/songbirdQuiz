@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Question 5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Cinzel&family=Dancing+Script&family=Permanent+Marker&family=Questrial&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Caitlin Klotz - Project 1</title>
+</head>
+<body>
+    <header>
+        <h1>What Kind of Songbird are You?</h1>
+    
+        <p>Ever wonder what kind of songbird represents your personality best?</p>
+        <p class="startText">Click "Start the Quiz" to find out!</p>
+    </header>
+
+    <div class="wrapper mainSection">
+        <button class="startButton" id="startButton">Start the Quiz</button>
+
+        <div class="quiz" id="quiz">
+            <!-- dynamically render quiz questions -->
+        </div>
+    
+        <button id="next">Next Question</button>
+        <button id="result">Calculate Result!</button>
+        <!-- Images are all from unsplash.com -->
+        <div class="results" id="results">
+            <!-- dynamically render one result corresponding to the chosen questions -->
+            
+        </div>
+    
+        <button type="reset" id="playAgain">Play Again?</button>
+    </div>
+
+    <footer>Created at Juno College</footer>
+
+    <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
+    <script src="script.js"></script>
+</body>
+</html>
